@@ -48,6 +48,8 @@ public:
   void attachTextCallback(receiveTextFunction newFunction); ///< Register the function for displaying a rds text.
   void attachTimeCallback(receiveTimeFunction newFunction); ///< Register function for displaying a new time
 
+  void printPICode(); ///< Print Program Identifier Code
+
 private:
   // ----- actual RDS values
   uint8_t rdsGroupType, rdsTP, rdsPTY;
@@ -57,6 +59,7 @@ private:
   char _PSName1[10]; // including trailing '\00' character.
   char _PSName2[10]; // including trailing '\00' character.
   char programServiceName[10];    // found station name or empty. Is max. 8 character long.
+  uint16_t PICode;
 
   receiveServicenNameFunction _sendServiceName; ///< Registered ServiceName function.
   receiveTimeFunction _sendTime; ///< Registered Time function.

@@ -24,11 +24,12 @@ RDSParser::RDSParser() {
 
 
 void RDSParser::init() {
-  strcpy(_PSName1, "--------");
+  strcpy(_PSName1, "\0");
   strcpy(_PSName2, _PSName1);
-  strcpy(programServiceName, "        ");
+  strcpy(programServiceName, "\0");
   memset(_RDSText, 0, sizeof(_RDSText));
   _lastTextIDX = 0;
+  PICode = 0;
 } // init()
 
 
@@ -49,6 +50,13 @@ void RDSParser::attachTimeCallback(receiveTimeFunction newFunction)
 } // attachTimeCallback
 
 
+void RDSParser::printPICode()
+{
+  Serial.print("<PI>:");
+  Serial.println(PICode, HEX);
+}
+
+
 void RDSParser::processData(uint16_t block1, uint16_t block2, uint16_t block3, uint16_t block4)
 {
   // DEBUG_FUNC0("process");
@@ -66,8 +74,8 @@ void RDSParser::processData(uint16_t block1, uint16_t block2, uint16_t block3, u
     init();
     // Send out empty data
     if (_sendServiceName) _sendServiceName(programServiceName);
-    if (_sendText)        _sendText("");
-    return;
+    if (_sendText)        _sendText("\0");
+    //return;
   } // if
 
   // analyzing Block 2
@@ -98,8 +106,11 @@ void RDSParser::processData(uint16_t block1, uint16_t block2, uint16_t block3, u
         if (strcmp(_PSName2, programServiceName) != 0) {
           // publish station name
           strcpy(programServiceName, _PSName2);
-          if (_sendServiceName)
+          if (_sendServiceName) {
+            PICode = block1;
+            printPICode();
             _sendServiceName(programServiceName);
+          }
         } // if
       } // if
     } // if
@@ -120,7 +131,7 @@ void RDSParser::processData(uint16_t block1, uint16_t block2, uint16_t block3, u
     if (idx < _lastTextIDX) {
       // the existing text might be complete because the index is starting at the beginning again.
       // now send it to the possible listener.
-      if (_sendText)
+      if (_sendText) 
         _sendText(_RDSText);
     }
     _lastTextIDX = idx;
@@ -131,7 +142,6 @@ void RDSParser::processData(uint16_t block1, uint16_t block2, uint16_t block3, u
       memset(_RDSText, 0, sizeof(_RDSText));
       // Serial.println("T>CLEAR");
     } // if
-
 
     // new data is 2 chars from block 3
     _RDSText[idx] = (block3 >> 8);     idx++;

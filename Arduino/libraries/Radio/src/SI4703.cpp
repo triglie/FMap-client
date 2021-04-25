@@ -328,6 +328,25 @@ void SI4703::_readRegisters()
 } // _readRegisters()
 
 
+// Reset all status registers from to the chip
+void SI4703::resetRegisters()
+{
+  //Si4703 begins reading from register upper register of 0x0A and reads to 0x0F, then loops to 0x00.
+  //Wire.requestFrom(SI4703_ADR, 32); //We want to read the entire register set from 0x0A to 0x09 = 32 bytes.
+  //registers[RDSA] = 0x0000;
+  //registers[RDSB] = 0x0000;
+  //registers[RDSC] = 0x0000;
+  //registers[RDSD] = 0x0000;
+  //registers[RDSR] = 0x0000;
+  //registers[RDSS] = 0x0000;
+  Wire.begin();
+  _readRegisters();
+  _saveRegisters();
+  delay(500);
+  _readRegisters();
+} // _resetRegisters()
+
+
 // Save writable registers back to the chip
 // The registers 02 through 06, containing the configuration
 // using the sequential write access mode.

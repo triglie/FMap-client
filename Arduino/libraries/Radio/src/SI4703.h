@@ -83,6 +83,7 @@ class SI4703 : public RADIO {
   // ----- read/write registers of the chip
 
   void  _readRegisters();  // read all status & data registers
+  void  resetRegisters(); // reset
   void  _saveRegisters();  // Save writable registers back to the chip
 
 private:
