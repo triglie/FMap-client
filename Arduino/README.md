@@ -29,7 +29,11 @@ In order to use the information some changes have been made to the original libr
 
 ## Usage
 
-First of all you have to download the Arduino IDE tar.xz from this link: <a href="https://www.arduino.cc/en/software">https://www.arduino.cc/en/software</a>
+First of all you have to download the Arduino IDE tar.xz from this link: <a href="https://www.arduino.cc/en/software">https://www.arduino.cc/en/software</a> or using the following command:
+
+```bash
+wget https://downloads.arduino.cc/arduino-1.8.13-linux64.tar.xz
+```
 
 Move the `arduino-<version>` inside **/YouDontNeedSpotify/Arduino** and build the package using the following commands:
 
@@ -43,11 +47,61 @@ If you get an error you have to modify the Arduino IDE tar.xz inside the *Docker
 After that you have to go in **YouDontNeedSpotify/Arduino/bin**:
 
 - *arduino-builder.sh* create a container called ArduinoBuilder, then you have to write the Arduino port and the sketch is uploaded into Arduino.
-- *arduinoIDE.sh* create a container called ArduinoIDE that permits to use the IDE without any installation [NOT TESTED IN WINDOWS AND MAC].
+- *arduinoIDE.sh* create a container called ArduinoIDE that permits to use the IDE without any installation [NOT TESTED IN MAC].
 
 **While using these scripts some errors and warnings will be shown, don't worry!**
 
 
+
+## On Windows (WSL)
+
+Download and install <a target="_blank" href="https://www.docker.com/products/docker-desktop">Docker Desktop</a>.
+
+Download and install <a target="_blank" href="https://sourceforge.net/projects/vcxsrv/">VcXsrv</a>.
+
+Now follow these steps:
+
+<img src="img/01.PNG">
+
+<img src="img/02.PNG">
+
+<img src="img/03.PNG">
+
+<img src="img/04.PNG">
+
+Now use the following command:
+
+```bash
+cat /etc/resolv.conf
+```
+
+Take note of the nameserver.
+
+<img src="img/05.PNG">
+
+After that, you have to use these command:
+
+```bash
+cd ~
+nano .bashrc
+```
+
+At the end insert:
+
+```bash
+export DISPLAY=<nameserver>:0.0
+export LIBGL_ALWAYS_INDIRECT=1
+```
+
+Use `CTRL+O` and `RETURN` to save; `CTRL+X` and `RETURN` to exit.
+
+Then use:
+
+```bash
+source .bashrc
+```
+
+Everything is ready to use the script that are inside **YouDontNeedSpotify/Arduino/bin**.
 
 ## Example
 
