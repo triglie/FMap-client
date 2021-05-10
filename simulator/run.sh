@@ -1,0 +1,1 @@
+docker run -it --rm --name mc-simulator -v "$PWD"/../logs:/usr/src/logs -v "$PWD":/usr/src/sim -w /usr/src/sim python:3.9.5 python app.py

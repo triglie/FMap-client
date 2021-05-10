@@ -31,16 +31,17 @@ def generate_random_PI_by_province(province):
 
 def microcontroller(province): 
     logpath = generate_path_by_province(province)
-    with open(logpath, 'a') as log:
-        # questo va cambiato in un while(true)
-        # o va utilizzato un determinato criterio di terminazione 
-        for i in range(10):
+    # questo va cambiato in un while(true)
+    # o va utilizzato un determinato criterio di terminazione 
+    for _ in range(15):
+        with open(logpath, 'a') as log:
             data  = f'province={province} '
             data += f'coords={province_coords.get(province)} '
             data += f'PI={generate_random_PI_by_province(province)} '
             #https://www.speedcheck.org/it/wiki/rssi/
             data += f'RSSI={random.randint(-120,0)} \n'            
             log.write(data)
+            time.sleep(random.randint(1,3))
 
 if __name__ == "__main__":
     print("Starting threads")
