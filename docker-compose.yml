@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+
+  logstash:
+    container_name: logstash
+    image: docker.elastic.co/logstash/logstash:7.11.2
+    volumes: 
+        - /usr/share/logstash/pipeline/:$PWD/logstash/pipeline/
+        - /usr/share/logstash/logs/:$PWD/logs/
+    
+  simulator: 
+    container_name: simulator
+    image: python:3.9.5
+    working_dir: /usr/src/sim
+    command: bash -c "python app.py"
+    volumes: 
+        - /usr/src/logs/:$PWD/logs/
+        - /usr/src/sim:$PWD/simulator/
