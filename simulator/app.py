@@ -33,7 +33,8 @@ def microcontroller(province):
     logpath = generate_path_by_province(province)
     # questo va cambiato in un while(true)
     # o va utilizzato un determinato criterio di terminazione 
-    for _ in range(15):
+    #for _ in range(15):
+    while(True):
         with open(logpath, 'a') as log:
             data  = f'province={province} '
             data += f'coords={province_coords.get(province)} '
