@@ -273,7 +273,14 @@ void RADIO::formatFrequency(char *s, uint8_t length)
       s[3] = '.';
 
       // append units
-      strcpy(s + 6, " MHz");
+      strcpy(s + 6, "");
+      int i = 1;
+      while(true) {
+        char c = s[i];
+        s[i-1] = c;
+        i++;
+        if(c == '\0') break;
+      }
     } // if
 
     //     f = _freqLow + (channel * _bandSteps);
@@ -296,19 +303,13 @@ void RADIO::debugEnable(bool enable)
 
 
 // print out all radio information
-void RADIO::debugRadioInfo()
+char* RADIO::debugRadioInfo()
 {
   RADIO_INFO info;
   this->getRadioInfo(&info);
-
-  Serial.print(info.rds ? " RDS" : " ---");
-  Serial.print(info.tuned ? " TUNED" : " -----");
-  Serial.print(info.stereo ? " STEREO" : "  MONO ");
-  Serial.print("  RSSI: ");
-  Serial.print(info.rssi);
-  Serial.print("  SNR: ");
-  Serial.print(info.snr);
-  Serial.println();
+  char* rssi = (char*) malloc(sizeof(char) * 128);
+  sprintf(rssi, "%u", info.rssi);
+  return rssi;
 } // debugRadioInfo()
 
 

@@ -207,7 +207,7 @@ public:
    */
   virtual void debugEnable(bool enable = true);
 
-  virtual void debugRadioInfo(); ///< Print out all radio information.
+  virtual char* debugRadioInfo(); ///< Print out all radio information.
   virtual void debugAudioInfo(); ///< Print out all audio information.
   virtual void debugStatus(); ///< Send debug information about actual available chip functionality and other internal things.
 

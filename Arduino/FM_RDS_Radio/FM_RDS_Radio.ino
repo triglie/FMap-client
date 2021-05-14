@@ -40,6 +40,8 @@ RDSParser rds;
 uint16_t g_block1;
 bool lowLevelDebug = false;
 RADIO_FREQ frequency;
+char province[128] = "Catania\0";
+char coords[128] = "coords=(37,5013; 15,0742)\0";
 
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -99,16 +101,13 @@ void setFrequency(RADIO_FREQ f) {
 
 
 /// Print frequency information.
-void printInfo() {
+char* printInfo() {
+  char* info = (char *) malloc(sizeof(char) * 1024);
   char s[12];
   radio.formatFrequency(s, sizeof(s));
-  Serial.print("Station:");
-  Serial.println(s);
-  Serial.print("Radio:");
-  radio.debugRadioInfo();
-  Serial.print("Audio:");
-  radio.debugAudioInfo();
+  sprintf(info, "province=%s coords=%s FM=%s RSSI=%s\0", province, coords, s, radio.debugRadioInfo());
   delay(1000);
+  return info;
 } // printInfo()
 
 
@@ -128,13 +127,10 @@ void checkRDS() {
 
 
 /// Print Programme Identifier.
-void printPICode() {
-  rds.printPICode();
-  if (g_block1) {
-    Serial.print("<PI>:");
-    Serial.print(g_block1, HEX);
-    Serial.print('\n');
-  } // if
+void printPICode(char* info) {
+  sprintf(info, "%s PI=%x", info, g_block1);
+  g_block1 = 0;
+  Serial.println(info);
 } // printPICode()
 
 
@@ -145,18 +141,16 @@ void runScanning() {
   RADIO_FREQ fMax = radio.getMaxFrequency();
 
   // ----- control the frequency -----
-  Serial.println("<SCAN>");
   fSave = radio.getFrequency();
   
   // start Simple Scan: all channels
   while (f <= fMax) {
     setFrequency(f);
-    Serial.println("<START>");
-    printInfo();
+    char* info = printInfo();
     checkRDS();
     f += radio.getFrequencyStep();
-    printPICode();
-    Serial.println("<END>");
+    printPICode(info);
+    free(info);
   } // while
   radio.setFrequency(fSave);
   Serial.println();
@@ -194,9 +188,6 @@ void setup() {
 
   // setup the information chain for RDS data.
   radio.attachReceiveRDS(RDS_process);
-  rds.attachServicenNameCallback(DisplayServiceName);
-  rds.attachTextCallback(DisplayText);
-  rds.attachTimeCallback(DisplayTime);
 } // Setup
 
 
