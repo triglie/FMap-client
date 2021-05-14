@@ -106,74 +106,34 @@ Everything is ready to use the script that are inside **YouDontNeedSpotify/Ardui
 ## Example
 
 ```bash
-<START>
-Station:101.80 MHz
-Radio: --- -----  MONO   RSSI: 8  SNR: 0
-Audio: ---- SOFTMUTE ----
-Sender:<RTL102.5>
-<END>
-<START>
-Station:101.90 MHz
-Radio: --- -----  MONO   RSSI: 1  SNR: 0
-Audio: ---- SOFTMUTE ----
-<END>
-<START>
-Station:102.00 MHz
-Radio: --- -----  MONO   RSSI: 0  SNR: 0
-Audio: ---- SOFTMUTE ----
-<END>
-<START>
-Station:102.10 MHz
-Radio: --- -----  MONO   RSSI: 0  SNR: 0
-Audio: ---- SOFTMUTE ----
-<END>
-<START>
-Station:102.20 MHz
-Radio: --- -----  MONO   RSSI: 2  SNR: 0
-Audio: ---- SOFTMUTE ----
-<END>
-<START>
-Station:102.30 MHz
-Radio: --- -----  MONO   RSSI: 1  SNR: 0
-Audio: ---- SOFTMUTE ----
-<END>
-<START>
-Station:102.40 MHz
-Radio: --- -----  MONO   RSSI: 3  SNR: 0
-Audio: ---- SOFTMUTE ----
-<END>
-<START>
-Station:102.50 MHz
-Radio: --- -----  MONO   RSSI: 4  SNR: 0
-Audio: ---- SOFTMUTE ----
-<END>
-<START>
-Station:102.60 MHz
-Radio: --- -----  MONO   RSSI: 5  SNR: 0
-Audio: ---- SOFTMUTE ----
-<END>
-<START>
-Station:102.70 MHz
-Radio: --- -----  MONO   RSSI: 2  SNR: 0
-Audio: ---- SOFTMUTE ----
-<END>
-<START>
-Station:102.80 MHz
-Radio: --- -----  MONO   RSSI: 5  SNR: 0
-Audio: ---- SOFTMUTE ----
-<END>
-<START>
-Station:102.90 MHz
-Radio: --- -----  MONO   RSSI: 13  SNR: 0
-Audio: ---- SOFTMUTE ----
-<END>
-<START>
-Station:103.00 MHz
-Radio: --- -----  MONO   RSSI: 29  SNR: 0
-Audio: ---- SOFTMUTE ----
-Sender:< FRECCIA>
-Text: <THE KILLERS - HUMAN                                             >
-Text: <THE KILLERS - HUMAN                                             >
-<END>
+province=Catania coords=coords=(37,5013; 15,0742) FM=87.50 RSSI=22 PI=5397
+province=Catania coords=coords=(37,5013; 15,0742) FM=87.60 RSSI=18 PI=0
+province=Catania coords=coords=(37,5013; 15,0742) FM=87.70 RSSI=6 PI=0
+province=Catania coords=coords=(37,5013; 15,0742) FM=87.80 RSSI=7 PI=0
+province=Catania coords=coords=(37,5013; 15,0742) FM=87.90 RSSI=6 PI=0
+province=Catania coords=coords=(37,5013; 15,0742) FM=88.00 RSSI=6 PI=0
+province=Catania coords=coords=(37,5013; 15,0742) FM=88.10 RSSI=14 PI=0
+province=Catania coords=coords=(37,5013; 15,0742) FM=88.20 RSSI=16 PI=0
+province=Catania coords=coords=(37,5013; 15,0742) FM=88.30 RSSI=14 PI=0
+province=Catania coords=coords=(37,5013; 15,0742) FM=88.40 RSSI=7 PI=0
+province=Catania coords=coords=(37,5013; 15,0742) FM=88.50 RSSI=8 PI=0
+province=Catania coords=coords=(37,5013; 15,0742) FM=88.60 RSSI=4 PI=0
+province=Catania coords=coords=(37,5013; 15,0742) FM=88.70 RSSI=12 PI=0
+province=Catania coords=coords=(37,5013; 15,0742) FM=88.80 RSSI=14 PI=0
+province=Catania coords=coords=(37,5013; 15,0742) FM=88.90 RSSI=5 PI=0
+province=Catania coords=coords=(37,5013; 15,0742) FM=89.00 RSSI=9 PI=0
+province=Catania coords=coords=(37,5013; 15,0742) FM=89.10 RSSI=16 PI=5274
+province=Catania coords=coords=(37,5013; 15,0742) FM=89.20 RSSI=16 PI=0
+province=Catania coords=coords=(37,5013; 15,0742) FM=89.30 RSSI=15 PI=0
+province=Catania coords=coords=(37,5013; 15,0742) FM=89.40 RSSI=11 PI=0
+province=Catania coords=coords=(37,5013; 15,0742) FM=89.50 RSSI=11 PI=0
+province=Catania coords=coords=(37,5013; 15,0742) FM=89.60 RSSI=2 PI=0
+province=Catania coords=coords=(37,5013; 15,0742) FM=89.70 RSSI=7 PI=0
+province=Catania coords=coords=(37,5013; 15,0742) FM=89.80 RSSI=7 PI=0
+province=Catania coords=coords=(37,5013; 15,0742) FM=89.90 RSSI=6 PI=0
+province=Catania coords=coords=(37,5013; 15,0742) FM=90.00 RSSI=7 PI=0
+province=Catania coords=coords=(37,5013; 15,0742) FM=90.10 RSSI=8 PI=0
+province=Catania coords=coords=(37,5013; 15,0742) FM=90.20 RSSI=11 PI=0
+province=Catania coords=coords=(37,5013; 15,0742) FM=90.30 RSSI=16 PI=0
 ```
 
