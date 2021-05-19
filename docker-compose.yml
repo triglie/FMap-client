@@ -1,4 +1,4 @@
-version: '3'
+version: '3.7'
 
 services:
 
@@ -8,12 +8,30 @@ services:
     volumes: 
         - $PWD/logstash/pipeline/:/usr/share/logstash/pipeline/
         - $PWD/logs/:/usr/share/logstash/logs/
-    
+    networks: 
+      - fmap-ext 
+      - fmap-com 
+  
   simulator: 
     container_name: simulator
     image: python:3.9.5
     working_dir: /usr/src/sim
-    command: bash -c "python app.py"
+    command: bash -c "pip install pandas && python app.py"
     volumes: 
         - $PWD/logs/:/usr/src/logs/
         - $PWD/simulator/:/usr/src/sim
+    networks: 
+      - fmap-ext 
+      - fmap-com 
+
+networks:
+
+  fmap-ext:
+    name: fmap-ext
+    driver: bridge
+  
+  fmap-com: 
+    name: fmap-com
+    driver: bridge
+  
+      
