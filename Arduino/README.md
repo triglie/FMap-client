@@ -31,15 +31,15 @@ In order to use the information some changes have been made to the original libr
 
 First of all you have to download the Arduino IDE tar.xz from this link: <a href="https://www.arduino.cc/en/software">https://www.arduino.cc/en/software</a> or using the following command:
 
-```bash
-wget https://downloads.arduino.cc/arduino-1.8.13-linux64.tar.xz
+```shell
+$ wget https://downloads.arduino.cc/arduino-1.8.13-linux64.tar.xz
 ```
 
 Move the `arduino-<version>` inside **/YouDontNeedSpotify/Arduino** and build the package using the following commands:
 
-```bash
-cd YouDontNeedSpotify/Arduino
-docker build --tag youdontneedspotify:ArduinoRadio .
+```shell
+$ cd YouDontNeedSpotify/Arduino
+$ docker build --tag youdontneedspotify:ArduinoRadio .
 ```
 
 If you get an error you have to modify the Arduino IDE tar.xz inside the *Dockerfile*.
@@ -71,8 +71,8 @@ Now follow these steps:
 
 Now use the following command:
 
-```bash
-cat /etc/resolv.conf
+```shell
+$ cat /etc/resolv.conf
 ```
 
 Take note of the nameserver.
@@ -81,27 +81,28 @@ Take note of the nameserver.
 
 After that, you have to use these command:
 
-```bash
-cd ~
-nano .bashrc
+```shell
+$ cd ~
+$ nano .bashrc
 ```
 
 At the end insert:
 
-```bash
-export DISPLAY=<nameserver>:0.0
-export LIBGL_ALWAYS_INDIRECT=1
+```shell
+$ export DISPLAY=<nameserver>:0.0
+$ export LIBGL_ALWAYS_INDIRECT=1
 ```
 
 Use `CTRL+O` and `RETURN` to save; `CTRL+X` and `RETURN` to exit.
 
 Then use:
 
-```bash
-source .bashrc
+```shell
+$ source .bashrc
 ```
 
-Everything is ready to use the script that are inside **YouDontNeedSpotify/Arduino/bin**.
+**WARNING:** You can't use the scripts **YouDontNeedSpotify/Arduino/bin** because of WS, so you have to wait future update. Well, the best solution for Windows is to use the official <a href="https://www.microsoft.com/it-it/p/arduino-ide/9nblggh4rsd8?ocid=badge&rtc=1&activetab=pivot:overviewtab" target="_blank">Arduino IDE</a>.
+
 
 ## Example
 
