@@ -14,8 +14,10 @@ RUN /home/arduino-1.8.13/install.sh
 
 RUN groupadd -g 1000 triglie
 RUN useradd -d /home/triglie -s /bin/bash -m triglie -u 1000 -g 1000
+
 USER triglie
 ENV HOME /home/triglie
+ENV PORT ttyACM0
 
 COPY ./.arduino15 /home/triglie/.arduino15
 
