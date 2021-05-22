@@ -101,7 +101,7 @@ Then use:
 $ source .bashrc
 ```
 
-**WARNING:** You can't use the scripts **YouDontNeedSpotify/Arduino/bin** because of WS, so you have to wait future update. Well, the best solution for Windows is to use the official <a href="https://www.microsoft.com/it-it/p/arduino-ide/9nblggh4rsd8?ocid=badge&rtc=1&activetab=pivot:overviewtab" target="_blank">Arduino IDE</a>.
+**WARNING:** You can't use the scripts **YouDontNeedSpotify/Arduino/bin** because of WSL, so you have to wait future update. Well, the best solution for Windows is to use the official <a href="https://www.microsoft.com/it-it/p/arduino-ide/9nblggh4rsd8?ocid=badge&rtc=1&activetab=pivot:overviewtab" target="_blank">Arduino IDE</a>.
 
 
 ## Example
